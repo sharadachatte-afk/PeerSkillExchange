@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register - PeerSkill</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            PeerSkill
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <section class="form-section">
+
+        <div class="form-container">
+
+            <h1>Create Your Account</h1>
+
+            <p>
+                Join your college peer learning community.
+            </p>
+
+
+            <form id="registerForm">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label>
+                    College Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your college email"
+                    required
+                >
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create password"
+                    required
+                >
+
+
+                <label>
+                    Department
+                </label>
+
+                <input
+                    type="text"
+                    id="department"
+                    placeholder="Example: AI & DS"
+                    required
+                >
+
+
+                <label>
+                    Year
+                </label>
+
+                <select id="year" required>
+
+                    <option value="">
+                        Select Year
+                    </option>
+
+                    <option value="1">
+                        1st Year
+                    </option>
+
+                    <option value="2">
+                        2nd Year
+                    </option>
+
+                    <option value="3">
+                        3rd Year
+                    </option>
+
+                    <option value="4">
+                        4th Year
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Skills You Can Teach
+                </label>
+
+                <input
+                    type="text"
+                    id="teachSkills"
+                    placeholder="Python, Java, SQL"
+                    required
+                >
+
+
+                <label>
+                    Skills You Want To Learn
+                </label>
+
+                <input
+                    type="text"
+                    id="learnSkills"
+                    placeholder="React, JavaScript, ML"
+                    required
+                >
+
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <p class="form-bottom">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+    <script src="js/register.js"></script>
+
+
+</body>
+
+</html>

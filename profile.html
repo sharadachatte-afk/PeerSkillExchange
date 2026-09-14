@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - Peer Skills Exchange</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Peer Skills Exchange
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="find-peers.html">Find Peers</a>
+
+            <a href="requests.html">Requests</a>
+
+            <a href="profile.html">Profile</a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- PROFILE -->
+
+    <section class="profile-section">
+
+        <h1>My Profile</h1>
+
+        <p>Edit your information and skills.</p>
+
+
+        <form id="profileForm">
+
+
+            <!-- NAME -->
+
+            <label for="profileName">
+                Name
+            </label>
+
+            <input
+                type="text"
+                id="profileName"
+                required
+            >
+
+
+            <!-- EMAIL -->
+
+            <label for="profileEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="profileEmail"
+                disabled
+            >
+
+
+            <!-- DEPARTMENT -->
+
+            <label for="profileDepartment">
+                Department
+            </label>
+
+            <input
+                type="text"
+                id="profileDepartment"
+                required
+            >
+
+
+            <!-- YEAR -->
+
+            <label for="profileYear">
+                Year
+            </label>
+
+            <input
+                type="text"
+                id="profileYear"
+                required
+            >
+
+
+            <!-- TEACH SKILLS -->
+
+            <label for="profileTeachSkills">
+                Skills I Can Teach
+            </label>
+
+            <input
+                type="text"
+                id="profileTeachSkills"
+                placeholder="Example: JavaScript, HTML, Python"
+            >
+
+
+            <!-- LEARN SKILLS -->
+
+            <label for="profileLearnSkills">
+                Skills I Want to Learn
+            </label>
+
+            <input
+                type="text"
+                id="profileLearnSkills"
+                placeholder="Example: MongoDB, React"
+            >
+
+
+            <button type="submit">
+                Save Profile
+            </button>
+
+
+        </form>
+
+    </section>
+
+
+    <script src="js/profile.js"></script>
+
+</body>
+
+</html>

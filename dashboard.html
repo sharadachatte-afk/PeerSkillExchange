@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Peer Skills Exchange</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Peer Skills Exchange
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="find-peers.html">Find Peers</a>
+
+            <a href="requests.html">Requests</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="#" onclick="logout()">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard-section">
+
+        <h1>
+            Welcome, <span id="studentName">Student</span>!
+        </h1>
+
+        <p>
+            Welcome to your Peer Skills Exchange dashboard.
+        </p>
+
+
+        <!-- STUDENT INFORMATION -->
+
+        <div class="dashboard-card">
+
+            <h2>My Information</h2>
+
+            <p>
+                <strong>Email:</strong>
+                <span id="studentEmail">-</span>
+            </p>
+
+            <p>
+                <strong>Department:</strong>
+                <span id="studentDepartment">-</span>
+            </p>
+
+            <p>
+                <strong>Year:</strong>
+                <span id="studentYear">-</span>
+            </p>
+
+        </div>
+
+
+        <!-- SKILLS I CAN TEACH -->
+
+        <div class="dashboard-card">
+
+            <h2>Skills I Can Teach</h2>
+
+            <div id="teachSkillsContainer">
+                <p>No skills added.</p>
+            </div>
+
+        </div>
+
+
+        <!-- SKILLS I WANT TO LEARN -->
+
+        <div class="dashboard-card">
+
+            <h2>Skills I Want to Learn</h2>
+
+            <div id="learnSkillsContainer">
+                <p>No skills added.</p>
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="dashboard-card">
+
+            <h2>Quick Actions</h2>
+
+            <a href="find-peers.html">
+                <button>Find Peers</button>
+            </a>
+
+            <a href="requests.html">
+                <button>View Requests</button>
+            </a>
+
+            <a href="profile.html">
+                <button>My Profile</button>
+            </a>
+
+        </div>
+        <!-- MATCHES SECTION -->
+
+<div class="matches-section">
+    <h2>Recommended Peer Matches</h2>
+
+    <p>
+        Peers who can teach skills you want to learn.
+    </p>
+
+    <div id="matchResults">
+        <p>Loading matches...</p>
+    </div>
+</div><!-- MATCHES SECTION -->
+
+<div class="matches-section">
+    <h2>Recommended Peer Matches</h2>
+
+    <p>
+        Peers who can teach skills you want to learn.
+    </p>
+
+    <div id="matchResults">
+        <p>Loading matches...</p>
+    </div>
+</div>
+
+    </section>
+
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

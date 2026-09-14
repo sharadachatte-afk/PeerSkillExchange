@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Find Peers - PeerSkill</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            PeerSkill
+        </div>
+
+        <div class="nav-links">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="find-peers.html">
+                Find Peers
+            </a>
+
+            <a href="requests.html">
+                Requests
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="index.html">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Main Content -->
+
+    <main class="find-peers">
+
+
+        <div class="page-title">
+
+            <h1>
+                Find Your Peer 🤝
+            </h1>
+
+            <p>
+                Search for students who can teach the skills
+                you want to learn.
+            </p>
+
+        </div>
+
+
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="skillSearch"
+                placeholder="Search a skill... Example: Python"
+            >
+
+            <button onclick="searchPeers()">
+                Search
+            </button>
+
+        </div>
+
+
+
+        <!-- Results -->
+
+        <div class="results-header">
+
+            <h2 id="resultTitle">
+                Recommended Peers
+            </h2>
+
+        </div>
+
+
+        <div
+            id="peerResults"
+            class="peer-container">
+
+            <!-- JavaScript will add students here -->
+
+        </div>
+
+
+    </main>
+
+
+    <script src="js/find-peers.js"></script>
+
+</body>
+
+</html>
