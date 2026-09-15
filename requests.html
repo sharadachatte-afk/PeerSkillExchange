@@ -2,25 +2,25 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Requests - Peer Skills Exchange</title>
 
+    <!-- CSS file is in the root folder -->
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
 
     <nav class="navbar">
 
         <div class="logo">
-            Peer Skills Exchange
+            PeerSkill
         </div>
 
         <div class="nav-links">
@@ -35,32 +35,52 @@
 
             <a href="profile.html">Profile</a>
 
+            <a href="#" onclick="logout(); return false;">
+                Logout
+            </a>
+
         </div>
 
     </nav>
 
 
-    <!-- REQUESTS SECTION -->
+    <!-- =========================
+         REQUESTS SECTION
+    ========================== -->
 
     <section class="requests-section">
 
-        <h1>Connection Requests</h1>
+        <div class="requests-container">
 
-        <p>
-            Manage your peer connection requests.
-        </p>
+            <div class="requests-header">
+
+                <h1>Connection Requests</h1>
+
+                <p>
+                    Manage your peer connection requests.
+                </p>
+
+            </div>
 
 
-        <div id="requestList">
+            <!-- Requests will be displayed here -->
 
-            <p>Loading requests...</p>
+            <div id="requestList">
+
+                <p class="loading-message">
+                    Loading requests...
+                </p>
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script src="requests.js"></script>
 
