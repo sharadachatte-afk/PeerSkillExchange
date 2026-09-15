@@ -203,7 +203,6 @@ rejected
 
 The deployed project is available at:
 
-**https://peerskillexchange-5.onrender.com**
 
 ## 👨‍💻 Author
 
