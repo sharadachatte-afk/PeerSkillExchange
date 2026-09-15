@@ -5,8 +5,8 @@ require("dotenv").config();
 
 const bcrypt = require("bcryptjs");
 
-const User = require("./models/User");
-const Request = require("./models/Request");
+const User = require("./User");
+const Request = require("./Request");
 
 const app = express();
 
@@ -15,7 +15,7 @@ const app = express();
 // MIDDLEWARE
 // ==========================================
 
-app.use(express.static("../frontend"));
+app.use(express.static("."));
 app.use(cors());
 app.use(express.json());
 
