@@ -61,7 +61,7 @@ async function searchPeers() {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/peers?skill=${encodeURIComponent(skill)}`
+            `/api/peers?skill=${encodeURIComponent(skill)}`
         );
 
 
@@ -231,7 +231,7 @@ async function sendRequest(peerId) {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/requests",
+            "/api/requests",
             {
                 method: "POST",
 
