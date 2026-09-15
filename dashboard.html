@@ -9,13 +9,14 @@
 
     <title>Dashboard - Peer Skills Exchange</title>
 
+    <!-- CSS file is in the root folder -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar">
 
@@ -25,37 +26,55 @@
 
         <div class="nav-links">
 
-            <a href="index.html">Home</a>
+            <a href="index.html">
+                Home
+            </a>
 
-            <a href="dashboard.html">Dashboard</a>
+            <a href="dashboard.html">
+                Dashboard
+            </a>
 
-            <a href="find-peers.html">Find Peers</a>
+            <a href="find-peers.html">
+                Find Peers
+            </a>
 
-            <a href="requests.html">Requests</a>
+            <a href="requests.html">
+                Requests
+            </a>
 
-            <a href="profile.html">Profile</a>
+            <a href="profile.html">
+                Profile
+            </a>
 
-            <a href="#" onclick="logout()">Logout</a>
+            <a href="#" onclick="logout(); return false;">
+                Logout
+            </a>
 
         </div>
 
     </nav>
 
 
-    <!-- DASHBOARD -->
+    <!-- ================= DASHBOARD ================= -->
 
     <section class="dashboard-section">
 
-        <h1>
-            Welcome, <span id="studentName">Student</span>!
-        </h1>
+        <div class="dashboard-header">
 
-        <p>
-            Welcome to your Peer Skills Exchange dashboard.
-        </p>
+            <h1>
+                Welcome, <span id="studentName">Student</span>!
+            </h1>
+
+            <p>
+                Welcome to your Peer Skills Exchange dashboard.
+                Here you can manage your skills, discover learning
+                partners and connect with other students.
+            </p>
+
+        </div>
 
 
-        <!-- STUDENT INFORMATION -->
+        <!-- ================= STUDENT INFORMATION ================= -->
 
         <div class="dashboard-card">
 
@@ -79,73 +98,134 @@
         </div>
 
 
-        <!-- SKILLS I CAN TEACH -->
+        <!-- ================= SKILLS I CAN TEACH ================= -->
 
         <div class="dashboard-card">
 
             <h2>Skills I Can Teach</h2>
 
+            <p>
+                These are the skills you can share with other
+                students in the peer learning community.
+            </p>
+
             <div id="teachSkillsContainer">
-                <p>No skills added.</p>
+
+                <p>
+                    No skills added.
+                </p>
+
             </div>
 
         </div>
 
 
-        <!-- SKILLS I WANT TO LEARN -->
+        <!-- ================= SKILLS I WANT TO LEARN ================= -->
 
         <div class="dashboard-card">
 
             <h2>Skills I Want to Learn</h2>
 
+            <p>
+                These are the skills you are interested in learning
+                from other students.
+            </p>
+
             <div id="learnSkillsContainer">
-                <p>No skills added.</p>
+
+                <p>
+                    No skills added.
+                </p>
+
             </div>
 
         </div>
 
 
-        <!-- QUICK ACTIONS -->
+        <!-- ================= QUICK ACTIONS ================= -->
 
         <div class="dashboard-card">
 
             <h2>Quick Actions</h2>
 
-            <a href="find-peers.html">
-                <button type="button">Find Peers</button>
-            </a>
+            <p>
+                Use these options to explore the PeerSkill platform.
+            </p>
 
-            <a href="requests.html">
-                <button type="button">View Requests</button>
-            </a>
+            <div class="quick-actions">
 
-            <a href="profile.html">
-                <button type="button">My Profile</button>
-            </a>
+                <a href="find-peers.html">
+                    <button type="button">
+                        Find Peers
+                    </button>
+                </a>
+
+                <a href="requests.html">
+                    <button type="button">
+                        View Requests
+                    </button>
+                </a>
+
+                <a href="profile.html">
+                    <button type="button">
+                        My Profile
+                    </button>
+                </a>
+
+            </div>
 
         </div>
 
 
-        <!-- RECOMMENDED MATCHES -->
+        <!-- ================= RECOMMENDED MATCHES ================= -->
 
         <div class="matches-section">
 
-            <h2>Recommended Peer Matches</h2>
+            <h2>
+                Recommended Peer Matches
+            </h2>
 
             <p>
-                Peers who can teach skills you want to learn.
+                Find students who can teach the skills you want
+                to learn. These recommendations are based on
+                your learning interests.
             </p>
 
             <div id="matchResults">
-                <p>Loading matches...</p>
+
+                <p>
+                    Loading matches...
+                </p>
+
             </div>
+
+        </div>
+
+
+        <!-- ================= INFORMATION ================= -->
+
+        <div class="dashboard-card">
+
+            <h2>Learn and Grow Together</h2>
+
+            <p>
+                PeerSkill creates a collaborative environment where
+                students can exchange knowledge and help each other
+                develop useful academic and technical skills.
+            </p>
+
+            <p>
+                Explore different skills, connect with your peers,
+                send learning requests and make your college learning
+                experience more interactive.
+            </p>
 
         </div>
 
     </section>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script src="dashboard.js"></script>
 
