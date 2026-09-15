@@ -48,7 +48,7 @@ async function loadRequests() {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/requests/${currentUser.id}`
+            `/api/requests/${currentUser.id}`
         );
 
 
@@ -294,7 +294,7 @@ async function acceptRequest(requestId) {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/requests/${requestId}/accept`,
+            `/api/requests/${requestId}/accept`,
             {
                 method: "PUT"
             }
@@ -354,7 +354,7 @@ async function rejectRequest(requestId) {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/requests/${requestId}/reject`,
+            `/api/requests/${requestId}/reject`,
             {
                 method: "PUT"
             }
