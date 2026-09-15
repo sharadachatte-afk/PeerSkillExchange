@@ -127,7 +127,7 @@ async function loadMatches() {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/matches/${currentUser.id}`
+            `/api/matches/${currentUser.id}`
         );
 
         const matches = await response.json();
@@ -239,7 +239,7 @@ async function sendMatchRequest(peerId) {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/requests",
+            /api/requests",
             {
                 method: "POST",
 
