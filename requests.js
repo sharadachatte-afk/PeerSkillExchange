@@ -1,31 +1,43 @@
 console.log("Requests JavaScript loaded!");
 
-
 // ==========================================
 // GET CURRENT LOGGED-IN USER
 // ==========================================
 
-const currentUser =
-    JSON.parse(localStorage.getItem("currentUser"));
-
+const currentUser = JSON.parse(
+    localStorage.getItem("currentUser")
+);
 
 // ==========================================
 // REQUEST LIST ELEMENT
 // ==========================================
 
-const requestList =
-    document.getElementById("requestList");
+const requestList = document.getElementById("requestList");
 
+// ==========================================
+// GET USER ID SAFELY
+// ==========================================
+
+const userId = currentUser
+    ? (currentUser.id || currentUser._id)
+    : null;
 
 // ==========================================
 // CHECK LOGIN
 // ==========================================
 
-if (!currentUser) {
+if (!currentUser || !userId) {
 
     alert("Please login first.");
 
+    localStorage.removeItem("currentUser");
+
     window.location.href = "login.html";
+
+} else {
+
+    console.log("Logged-in user:", currentUser);
+    console.log("User ID:", userId);
 
 }
 
@@ -36,7 +48,7 @@ if (!currentUser) {
 
 async function loadRequests() {
 
-    if (!currentUser) {
+    if (!userId) {
         return;
     }
 
@@ -44,44 +56,60 @@ async function loadRequests() {
         <p>Loading requests...</p>
     `;
 
-
     try {
 
+        console.log(
+            "Loading requests for user:",
+            userId
+        );
+
         const response = await fetch(
-            `/api/requests/${currentUser.id}`
+            `/api/requests/${userId}`
+        );
+
+        console.log(
+            "Request API status:",
+            response.status
+        );
+
+        const data = await response.json();
+
+        console.log(
+            "Requests received:",
+            data
         );
 
 
-        const requests =
-            await response.json();
-
-
         // ======================================
-        // CHECK SERVER RESPONSE
+        // SERVER ERROR
         // ======================================
 
         if (!response.ok) {
 
             requestList.innerHTML = `
-                <p>${requests.message}</p>
+                <div class="no-requests">
+                    <h3>Error Loading Requests</h3>
+                    <p>${data.message || "Something went wrong."}</p>
+                </div>
             `;
 
             return;
         }
-
-
-        // Clear loading message
-        requestList.innerHTML = "";
 
 
         // ======================================
         // NO REQUESTS
         // ======================================
 
-        if (requests.length === 0) {
+        if (!Array.isArray(data) || data.length === 0) {
 
             requestList.innerHTML = `
-                <p>No connection requests yet.</p>
+                <div class="no-requests">
+                    <h3>No Connection Requests</h3>
+                    <p>
+                        You don't have any connection requests yet.
+                    </p>
+                </div>
             `;
 
             return;
@@ -89,31 +117,43 @@ async function loadRequests() {
 
 
         // ======================================
+        // CLEAR LOADING
+        // ======================================
+
+        requestList.innerHTML = "";
+
+
+        // ======================================
         // DISPLAY REQUESTS
         // ======================================
 
-        requests.forEach(request => {
+        data.forEach(request => {
 
-            const card =
-                document.createElement("div");
+            const card = document.createElement("div");
 
             card.className = "request-card";
 
 
             // ==================================
-            // CHECK SENDER
+            // SENDER INFORMATION CHECK
             // ==================================
 
             if (!request.sender) {
 
                 card.innerHTML = `
-                    <p>Sender information unavailable.</p>
+                    <h3>Connection Request</h3>
+                    <p>
+                        Sender information is unavailable.
+                    </p>
                 `;
 
                 requestList.appendChild(card);
 
                 return;
             }
+
+
+            const sender = request.sender;
 
 
             // ==================================
@@ -125,32 +165,40 @@ async function loadRequests() {
                 card.innerHTML = `
 
                     <h3>
-                        ${request.sender.name}
+                        ${sender.name || "Unknown Student"}
                     </h3>
 
                     <p>
                         <strong>Email:</strong>
-                        ${request.sender.email}
+                        ${sender.email || "Not available"}
                     </p>
 
                     <p>
                         <strong>Department:</strong>
-                        ${request.sender.department}
+                        ${sender.department || "Not available"}
                     </p>
 
                     <p>
                         <strong>Year:</strong>
-                        ${request.sender.year}
+                        ${sender.year || "Not available"}
                     </p>
 
                     <p>
                         <strong>Can Teach:</strong>
-                        ${request.sender.teachSkills.join(", ")}
+                        ${
+                            Array.isArray(sender.teachSkills)
+                                ? sender.teachSkills.join(", ")
+                                : "Not specified"
+                        }
                     </p>
 
                     <p>
                         <strong>Wants to Learn:</strong>
-                        ${request.sender.learnSkills.join(", ")}
+                        ${
+                            Array.isArray(sender.learnSkills)
+                                ? sender.learnSkills.join(", ")
+                                : "Not specified"
+                        }
                     </p>
 
                     <p>
@@ -158,17 +206,22 @@ async function loadRequests() {
                         Pending
                     </p>
 
-                    <button
-                        onclick="acceptRequest('${request._id}')">
-                        Accept
-                    </button>
+                    <div class="request-actions">
 
-                    <button
-                        onclick="rejectRequest('${request._id}')">
-                        Reject
-                    </button>
+                        <button
+                            class="accept-button"
+                            onclick="acceptRequest('${request._id}')">
+                            Accept
+                        </button>
+
+                        <button
+                            class="reject-button"
+                            onclick="rejectRequest('${request._id}')">
+                            Reject
+                        </button>
+
+                    </div>
                 `;
-
             }
 
 
@@ -181,35 +234,30 @@ async function loadRequests() {
                 card.innerHTML = `
 
                     <h3>
-                        ${request.sender.name}
+                        ${sender.name || "Unknown Student"}
                     </h3>
 
                     <p>
                         <strong>Email:</strong>
-                        ${request.sender.email}
+                        ${sender.email || "Not available"}
                     </p>
 
                     <p>
                         <strong>Department:</strong>
-                        ${request.sender.department}
+                        ${sender.department || "Not available"}
                     </p>
 
                     <p>
                         <strong>Year:</strong>
-                        ${request.sender.year}
-                    </p>
-
-                    <p>
-                        <strong>Matched Peer:</strong>
-                        ${request.sender.name}
+                        ${sender.year || "Not available"}
                     </p>
 
                     <p>
                         <strong>Status:</strong>
                         Accepted
                     </p>
-                `;
 
+                `;
             }
 
 
@@ -222,41 +270,40 @@ async function loadRequests() {
                 card.innerHTML = `
 
                     <h3>
-                        ${request.sender.name}
+                        ${sender.name || "Unknown Student"}
                     </h3>
 
                     <p>
                         <strong>Email:</strong>
-                        ${request.sender.email}
+                        ${sender.email || "Not available"}
                     </p>
 
                     <p>
                         <strong>Department:</strong>
-                        ${request.sender.department}
+                        ${sender.department || "Not available"}
                     </p>
 
                     <p>
                         <strong>Year:</strong>
-                        ${request.sender.year}
+                        ${sender.year || "Not available"}
                     </p>
 
                     <p>
                         <strong>Status:</strong>
                         Rejected
                     </p>
-                `;
 
+                `;
             }
 
 
             // ==================================
-            // ADD CARD TO PAGE
+            // ADD CARD
             // ==================================
 
             requestList.appendChild(card);
 
         });
-
 
     } catch (error) {
 
@@ -266,12 +313,17 @@ async function loadRequests() {
         );
 
         requestList.innerHTML = `
-            <p>
-                Cannot connect to the server.
-                Please make sure the backend is running.
-            </p>
-        `;
+            <div class="no-requests">
 
+                <h3>Unable to Load Requests</h3>
+
+                <p>
+                    Cannot connect to the server.
+                    Please try again.
+                </p>
+
+            </div>
+        `;
     }
 }
 
@@ -282,14 +334,18 @@ async function loadRequests() {
 
 async function acceptRequest(requestId) {
 
-    const confirmAccept =
-        confirm("Do you want to accept this request?");
+    if (!requestId) {
+        alert("Invalid request ID.");
+        return;
+    }
 
+    const confirmAccept = confirm(
+        "Do you want to accept this request?"
+    );
 
     if (!confirmAccept) {
         return;
     }
-
 
     try {
 
@@ -300,9 +356,12 @@ async function acceptRequest(requestId) {
             }
         );
 
+        const data = await response.json();
 
-        const data =
-            await response.json();
+        console.log(
+            "Accept response:",
+            data
+        );
 
 
         if (response.ok) {
@@ -311,15 +370,15 @@ async function acceptRequest(requestId) {
                 "Request accepted successfully!"
             );
 
-            // Reload requests
-            loadRequests();
+            await loadRequests();
 
         } else {
 
-            alert(data.message);
+            alert(
+                data.message || "Unable to accept request."
+            );
 
         }
-
 
     } catch (error) {
 
@@ -342,14 +401,18 @@ async function acceptRequest(requestId) {
 
 async function rejectRequest(requestId) {
 
-    const confirmReject =
-        confirm("Do you want to reject this request?");
+    if (!requestId) {
+        alert("Invalid request ID.");
+        return;
+    }
 
+    const confirmReject = confirm(
+        "Do you want to reject this request?"
+    );
 
     if (!confirmReject) {
         return;
     }
-
 
     try {
 
@@ -360,9 +423,12 @@ async function rejectRequest(requestId) {
             }
         );
 
+        const data = await response.json();
 
-        const data =
-            await response.json();
+        console.log(
+            "Reject response:",
+            data
+        );
 
 
         if (response.ok) {
@@ -371,15 +437,15 @@ async function rejectRequest(requestId) {
                 "Request rejected successfully!"
             );
 
-            // Reload requests
-            loadRequests();
+            await loadRequests();
 
         } else {
 
-            alert(data.message);
+            alert(
+                data.message || "Unable to reject request."
+            );
 
         }
-
 
     } catch (error) {
 
@@ -397,9 +463,23 @@ async function rejectRequest(requestId) {
 
 
 // ==========================================
+// LOGOUT
+// ==========================================
+
+function logout() {
+
+    localStorage.removeItem("currentUser");
+
+    window.location.href = "login.html";
+}
+
+
+// ==========================================
 // START
 // ==========================================
 
-if (currentUser) {
+if (currentUser && userId) {
+
     loadRequests();
+
 }
