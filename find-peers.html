@@ -5,17 +5,15 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Find Peers - PeerSkill</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-
 
     <!-- Navigation -->
 
@@ -52,11 +50,9 @@
     </nav>
 
 
-
     <!-- Main Content -->
 
     <main class="find-peers">
-
 
         <div class="page-title">
 
@@ -72,7 +68,6 @@
         </div>
 
 
-
         <!-- Search -->
 
         <div class="search-box">
@@ -83,15 +78,14 @@
                 placeholder="Search a skill... Example: Python"
             >
 
-            <button onclick="searchPeers()">
+            <button type="button" onclick="searchPeers()">
                 Search
             </button>
 
         </div>
 
 
-
-        <!-- Results -->
+        <!-- Results Header -->
 
         <div class="results-header">
 
@@ -102,6 +96,8 @@
         </div>
 
 
+        <!-- Results -->
+
         <div
             id="peerResults"
             class="peer-container">
@@ -110,11 +106,12 @@
 
         </div>
 
-
     </main>
 
 
-    <script src="js/find-peers.js"></script>
+    <!-- JavaScript -->
+
+    <script src="find-peers.js"></script>
 
 </body>
 
